@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "cn.zbx1425.boxdeco.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

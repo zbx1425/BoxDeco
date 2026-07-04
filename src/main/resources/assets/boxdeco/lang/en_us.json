@@ -1,0 +1,13 @@
+{
+  "itemGroup.boxdeco": "Example Mod Tab",
+  "block.boxdeco.example_block": "Example Block",
+  "item.boxdeco.example_item": "Example Item",
+
+  "boxdeco.configuration.title": "BoxDeco Configs",
+  "boxdeco.configuration.section.boxdeco.common.toml": "BoxDeco Configs",
+  "boxdeco.configuration.section.boxdeco.common.toml.title": "BoxDeco Configs",
+  "boxdeco.configuration.items": "Item List",
+  "boxdeco.configuration.logDirtBlock": "Log Dirt Block",
+  "boxdeco.configuration.magicNumberIntroduction": "Magic Number Text",
+  "boxdeco.configuration.magicNumber": "Magic Number"
+}
