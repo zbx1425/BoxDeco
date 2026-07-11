@@ -1,0 +1,79 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "boxdeco:block/metal",
+		"metal": "boxdeco:block/metal",
+		"glass": "block/light_gray_stained_glass"
+	},
+	"elements": [
+		{
+			"name": "Right side",
+			"from": [31, 0, 0],
+			"to": [32, 18, 2],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 16], "texture": "#metal"},
+				"east": {"uv": [14, 0, 16, 16], "texture": "#metal"},
+				"south": {"uv": [15, 0, 16, 16], "texture": "#metal"},
+				"west": {"uv": [0, 0, 2, 16], "texture": "#metal"},
+				"down": {"uv": [15, 14, 16, 16], "texture": "#metal", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Glass section lower",
+			"from": [17, 0, 1],
+			"to": [31, 9, 1],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [1, 6, 15, 15], "texture": "#glass"},
+				"south": {"uv": [1, 6, 15, 15], "texture": "#glass"}
+			}
+		},
+		{
+			"name": "Glass section higher",
+			"from": [17, 9, 1],
+			"to": [31, 18, 1],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [1, 1, 15, 10], "texture": "#glass"},
+				"south": {"uv": [1, 1, 15, 10], "texture": "#glass"}
+			}
+		},
+		{
+			"name": "Top",
+			"from": [16, 18, 0],
+			"to": [32, 19.5, 3],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 16, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1.5], "texture": "#metal"},
+				"east": {"uv": [13, 0, 16, 1.5], "texture": "#metal"},
+				"south": {"uv": [0, 0, 16, 1.5], "texture": "#metal"},
+				"west": {"uv": [0, 0, 3, 1.5], "texture": "#metal"},
+				"up": {"uv": [0, 0, 16, 3], "texture": "#metal"},
+				"down": {"uv": [0, 13, 16, 16], "texture": "#metal"}
+			}
+		},
+		{
+			"name": "Left side",
+			"from": [16, 0, 0],
+			"to": [17, 18, 2],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [15, 0, 16, 16], "texture": "#metal"},
+				"east": {"uv": [14, 0, 16, 16], "texture": "#metal"},
+				"south": {"uv": [0, 0, 1, 16], "texture": "#metal"},
+				"west": {"uv": [0, 0, 2, 16], "texture": "#metal"},
+				"down": {"uv": [0, 14, 1, 16], "texture": "#metal", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [30, 135, 0],
+			"translation": [3, -2.5, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	}
+}

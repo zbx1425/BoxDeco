@@ -1,0 +1,38 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "boxdeco:block/metal",
+		"metal": "boxdeco:block/metal"
+	},
+	"elements": [
+		{
+			"name": "Right side",
+			"from": [30, 0, 0],
+			"to": [32, 18, 2],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 16], "texture": "#metal"},
+				"east": {"uv": [14, 0, 16, 16], "texture": "#metal"},
+				"south": {"uv": [15, 0, 16, 16], "texture": "#metal"},
+				"west": {"uv": [0, 0, 2, 16], "texture": "#metal"},
+				"down": {"uv": [15, 14, 16, 16], "texture": "#metal", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Top",
+			"from": [29, 18, 0],
+			"to": [32, 19.5, 3],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 16, 0]},
+			"faces": {
+				"north": {"uv": [13, 0, 16, 1.5], "texture": "#metal"},
+				"east": {"uv": [13, 0, 16, 1.5], "texture": "#metal"},
+				"south": {"uv": [13, 0, 16, 1.5], "texture": "#metal"},
+				"west": {"uv": [0, 0, 3, 1.5], "texture": "#metal"},
+				"up": {"uv": [13, 0, 16, 3], "texture": "#metal"},
+				"down": {"uv": [13, 13, 16, 16], "texture": "#metal"}
+			}
+		}
+	]
+}
