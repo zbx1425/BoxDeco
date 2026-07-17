@@ -1,0 +1,112 @@
+{
+  "variants": {
+    "facing=east,part=lower,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower_mirrored",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,part=lower,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,part=middle,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle_mirrored",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,part=middle,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,part=upper,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper_mirrored",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=east,part=upper,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,part=lower,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower_mirrored",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,part=lower,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,part=middle,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle_mirrored",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,part=middle,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,part=upper,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper_mirrored",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=north,part=upper,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,part=lower,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower_mirrored",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,part=lower,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,part=middle,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle_mirrored",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,part=middle,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,part=upper,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper_mirrored",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,part=upper,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=west,part=lower,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower_mirrored"
+    },
+    "facing=west,part=lower,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_lower"
+    },
+    "facing=west,part=middle,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle_mirrored"
+    },
+    "facing=west,part=middle,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_middle"
+    },
+    "facing=west,part=upper,tilt=left_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper_mirrored"
+    },
+    "facing=west,part=upper,tilt=right_up": {
+      "model": "boxdeco:block/glass_railing_sloped_upper"
+    }
+  }
+}

@@ -1,6 +1,10 @@
 package cn.zbx1425.boxdeco;
 
-import cn.zbx1425.boxdeco.block.GlassRailingBlock;
+import cn.zbx1425.boxdeco.block.RailingBlock;
+import cn.zbx1425.boxdeco.block.SlopedRailingBlock;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.block.Block;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -10,8 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -32,11 +34,16 @@ public class BoxDeco {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<MapCodec<? extends Block>> BLOCK_TYPES = DeferredRegister.create(BuiltInRegistries.BLOCK_TYPE, "yourmodid");
 
-    public static final DeferredBlock<GlassRailingBlock> BLOCK_GLASS_RAILING = BLOCKS.registerBlock(
-        "glass_railing", GlassRailingBlock::new);
+    public static final DeferredBlock<RailingBlock> BLOCK_GLASS_RAILING = BLOCKS.registerBlock(
+        "glass_railing", RailingBlock::new);
     public static final DeferredItem<BlockItem> ITEM_BLOCK_GLASS_RAILING = ITEMS.registerSimpleBlockItem(
         "glass_railing", BLOCK_GLASS_RAILING);
+    public static final DeferredBlock<SlopedRailingBlock> BLOCK_SLOPED_GLASS_RAILING = BLOCKS.registerBlock(
+        "sloped_glass_railing", SlopedRailingBlock::new);
+    public static final DeferredItem<BlockItem> ITEM_BLOCK_SLOPED_GLASS_RAILING = ITEMS.registerSimpleBlockItem(
+        "sloped_glass_railing", BLOCK_SLOPED_GLASS_RAILING);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB_BOXDECO = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.boxdeco"))
@@ -44,6 +51,7 @@ public class BoxDeco {
             .icon(() -> ITEM_BLOCK_GLASS_RAILING.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ITEM_BLOCK_GLASS_RAILING.get());
+                output.accept(ITEM_BLOCK_SLOPED_GLASS_RAILING.get());
             }).build());
 
 
@@ -53,6 +61,7 @@ public class BoxDeco {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+        BLOCK_TYPES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

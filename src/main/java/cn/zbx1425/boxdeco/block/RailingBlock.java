@@ -1,6 +1,8 @@
 package cn.zbx1425.boxdeco.block;
 
+import cn.zbx1425.boxdeco.BoxDeco;
 import com.mojang.math.OctahedralGroup;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -9,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -21,9 +24,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
-public class GlassRailingBlock extends Block {
-    public static final EnumProperty<Direction> FACING;
+public class RailingBlock extends HorizontalDirectionalBlock {
+
     public static final EnumProperty<StairsShape> SHAPE;
 
     private static final VoxelShape SHAPE_OUTER;
@@ -33,10 +37,9 @@ public class GlassRailingBlock extends Block {
     private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_STRAIGHT;
     private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_INNER;
 
-    public GlassRailingBlock(Properties properties) {
+    public RailingBlock(Properties properties) {
         super(properties);
     }
-
 
     protected boolean useShapeForLightOcclusion(@NonNull BlockState state) {
         return true;
@@ -103,7 +106,7 @@ public class GlassRailingBlock extends Block {
     }
 
     public static boolean isRailing(BlockState state) {
-        return state.getBlock() instanceof GlassRailingBlock;
+        return state.getBlock() instanceof RailingBlock || state.getBlock() instanceof SlopedRailingBlock;
     }
 
     protected @NonNull BlockState rotate(BlockState state, Rotation rotation) {
@@ -165,13 +168,21 @@ public class GlassRailingBlock extends Block {
         builder.add(FACING, SHAPE);
     }
 
-
     protected boolean isPathfindable(@NonNull BlockState state, @NonNull PathComputationType type) {
         return false;
     }
 
+    public static final Supplier<MapCodec<RailingBlock>> CODEC = BoxDeco.BLOCK_TYPES.register(
+        "railing",
+        () -> BlockBehaviour.simpleCodec(RailingBlock::new)
+    );
+
+    @Override
+    protected @NonNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC.get();
+    }
+
     static {
-        FACING = HorizontalDirectionalBlock.FACING;
         SHAPE = BlockStateProperties.STAIRS_SHAPE;
         SHAPE_OUTER = Block.box(0.0F, 0.0F, 0.01F, 3.0F, 24.0F, 3.0F);
         SHAPE_STRAIGHT = Block.box(0.0F, 0.0F, 0.01F, 16.0F, 24.0F, 3.0F);
