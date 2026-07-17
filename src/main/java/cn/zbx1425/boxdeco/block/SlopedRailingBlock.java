@@ -197,20 +197,20 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
         // Base shapes for rotateHorizontal: railing at z=0-3 (north face), slope along X.
         // RIGHT_UP: high at +X (east), low at -X (west).
         VoxelShape lowerRU = Shapes.or(
-                Block.box(12, 0, 0, 16, 24, 3),
-                Block.box(8, 0, 0, 12, 20, 3),
-                Block.box(0, 0, 0, 8, 17.5, 3)
+                Block.box(12, 0, 0, 16, 32, 3),
+                Block.box(8, 0, 0, 12, 28, 3),
+                Block.box(4, 0, 0, 8, 24, 3),
+                Block.box(0, 0, 0, 4, 24, 3)
         );
         VoxelShape middleRU = Shapes.or(
-                Block.box(12, 8, 0, 16, 26, 3),
-                Block.box(8, 4, 0, 12, 22, 3),
-                Block.box(4, 0, 0, 8, 18, 3),
-                Block.box(0, -4, 0, 4, 14, 3)
+                Block.box(12, 0, 0, 16, 32, 3),
+                Block.box(8, 0, 0, 12, 28, 3),
+                Block.box(4, -8, 0, 8, 24, 3),
+                Block.box(0, -8, 0, 4, 24, 3)
         );
         VoxelShape upperRU = Shapes.or(
-                Block.box(6, 0, 0, 16, 17.5, 3),
-                Block.box(3, -2, 0, 6, 15, 3),
-                Block.box(0, -4, 0, 3, 12, 3)
+                Block.box(8, 0, 0, 16, 24, 3),
+                Block.box(0, -8, 0, 8, 24, 3)
         );
 
         VoxelShape lowerLU = mirrorSlope(lowerRU);
