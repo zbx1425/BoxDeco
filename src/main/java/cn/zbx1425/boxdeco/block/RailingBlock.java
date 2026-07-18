@@ -30,12 +30,18 @@ public class RailingBlock extends HorizontalDirectionalBlock {
 
     public static final EnumProperty<StairsShape> SHAPE;
 
-    private static final VoxelShape SHAPE_OUTER;
-    private static final VoxelShape SHAPE_STRAIGHT;
-    private static final VoxelShape SHAPE_INNER;
-    private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_OUTER;
-    private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_STRAIGHT;
-    private static final Map<Direction, VoxelShape> SHAPE_BOTTOM_INNER;
+    private static final VoxelShape SHAPE_CLIP_OUTER;
+    private static final VoxelShape SHAPE_CLIP_STRAIGHT;
+    private static final VoxelShape SHAPE_CLIP_INNER;
+    private static final Map<Direction, VoxelShape> SHAPES_CLIP_OUTER;
+    private static final Map<Direction, VoxelShape> SHAPES_CLIP_STRAIGHT;
+    private static final Map<Direction, VoxelShape> SHAPES_CLIP_INNER;
+    private static final VoxelShape SHAPE_ACT_OUTER;
+    private static final VoxelShape SHAPE_ACT_STRAIGHT;
+    private static final VoxelShape SHAPE_ACT_INNER;
+    private static final Map<Direction, VoxelShape> SHAPES_ACT_OUTER;
+    private static final Map<Direction, VoxelShape> SHAPES_ACT_STRAIGHT;
+    private static final Map<Direction, VoxelShape> SHAPES_ACT_INNER;
 
     public RailingBlock(Properties properties) {
         super(properties);
@@ -45,13 +51,34 @@ public class RailingBlock extends HorizontalDirectionalBlock {
         return true;
     }
 
-    protected @NonNull VoxelShape getShape(BlockState state, @NonNull BlockGetter level,
+    protected @NonNull VoxelShape getShape(@NonNull BlockState state, @NonNull BlockGetter level,
                                            @NonNull BlockPos pos, @NonNull CollisionContext context) {
+        return getInteractionShape(state, level, pos);
+    }
+
+    @Override
+    protected @NonNull VoxelShape getCollisionShape(BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull CollisionContext context) {
         Direction facing = state.getValue(FACING);
         Map<Direction, VoxelShape> shapes = switch (state.getValue(SHAPE)) {
-            case STRAIGHT -> SHAPE_BOTTOM_STRAIGHT;
-            case OUTER_LEFT, OUTER_RIGHT -> SHAPE_BOTTOM_OUTER;
-            case INNER_RIGHT, INNER_LEFT -> SHAPE_BOTTOM_INNER;
+            case STRAIGHT -> SHAPES_CLIP_STRAIGHT;
+            case OUTER_LEFT, OUTER_RIGHT -> SHAPES_CLIP_OUTER;
+            case INNER_RIGHT, INNER_LEFT -> SHAPES_CLIP_INNER;
+        };
+        Direction refDirection = switch (state.getValue(SHAPE)) {
+            case STRAIGHT, OUTER_LEFT, INNER_RIGHT -> facing;
+            case OUTER_RIGHT -> facing.getClockWise();
+            case INNER_LEFT -> facing.getCounterClockWise();
+        };
+        return shapes.get(refDirection);
+    }
+
+    @Override
+    protected @NonNull VoxelShape getInteractionShape(BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos) {
+        Direction facing = state.getValue(FACING);
+        Map<Direction, VoxelShape> shapes = switch (state.getValue(SHAPE)) {
+            case STRAIGHT -> SHAPES_ACT_STRAIGHT;
+            case OUTER_LEFT, OUTER_RIGHT -> SHAPES_ACT_OUTER;
+            case INNER_RIGHT, INNER_LEFT -> SHAPES_ACT_INNER;
         };
         Direction refDirection = switch (state.getValue(SHAPE)) {
             case STRAIGHT, OUTER_LEFT, INNER_RIGHT -> facing;
@@ -184,11 +211,17 @@ public class RailingBlock extends HorizontalDirectionalBlock {
 
     static {
         SHAPE = BlockStateProperties.STAIRS_SHAPE;
-        SHAPE_OUTER = Block.box(0.0F, 0.0F, 0.01F, 3.0F, 24.0F, 3.0F);
-        SHAPE_STRAIGHT = Block.box(0.0F, 0.0F, 0.01F, 16.0F, 24.0F, 3.0F);
-        SHAPE_INNER = Shapes.or(SHAPE_STRAIGHT, Shapes.rotate(SHAPE_STRAIGHT, OctahedralGroup.BLOCK_ROT_Y_90));
-        SHAPE_BOTTOM_OUTER = Shapes.rotateHorizontal(SHAPE_OUTER);
-        SHAPE_BOTTOM_STRAIGHT = Shapes.rotateHorizontal(SHAPE_STRAIGHT);
-        SHAPE_BOTTOM_INNER = Shapes.rotateHorizontal(SHAPE_INNER);
+        SHAPE_CLIP_OUTER = Block.box(0.0F, 0.0F, 0.01F, 3.0F, 24.0F, 3.0F);
+        SHAPE_CLIP_STRAIGHT = Block.box(0.0F, 0.0F, 0.01F, 16.0F, 24.0F, 3.0F);
+        SHAPE_CLIP_INNER = Shapes.or(SHAPE_CLIP_STRAIGHT, Shapes.rotate(SHAPE_CLIP_STRAIGHT, OctahedralGroup.BLOCK_ROT_Y_90));
+        SHAPES_CLIP_OUTER = Shapes.rotateHorizontal(SHAPE_CLIP_OUTER);
+        SHAPES_CLIP_STRAIGHT = Shapes.rotateHorizontal(SHAPE_CLIP_STRAIGHT);
+        SHAPES_CLIP_INNER = Shapes.rotateHorizontal(SHAPE_CLIP_INNER);
+        SHAPE_ACT_OUTER = Block.box(0.0F, 0.0F, 0.01F, 8.0F, 16.0F, 8.0F);
+        SHAPE_ACT_STRAIGHT = Block.box(0.0F, 0.0F, 0.01F, 16.0F, 16.0F, 8.0F);
+        SHAPE_ACT_INNER = Shapes.or(SHAPE_ACT_STRAIGHT, Shapes.rotate(SHAPE_ACT_STRAIGHT, OctahedralGroup.BLOCK_ROT_Y_90));
+        SHAPES_ACT_OUTER = Shapes.rotateHorizontal(SHAPE_ACT_OUTER);
+        SHAPES_ACT_STRAIGHT = Shapes.rotateHorizontal(SHAPE_ACT_STRAIGHT);
+        SHAPES_ACT_INNER = Shapes.rotateHorizontal(SHAPE_ACT_INNER);
     }
 }

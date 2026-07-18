@@ -33,6 +33,7 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
 
     @SuppressWarnings("unchecked")
     private static final Map<Direction, VoxelShape>[][] SHAPES = new Map[3][2];
+    private static final Map<Direction, VoxelShape> SHAPES_ACT;
 
     public SlopedRailingBlock(Properties properties) {
         super(properties);
@@ -40,8 +41,18 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
 
     protected @NonNull VoxelShape getShape(@NonNull BlockState state, @NonNull BlockGetter level,
                                            @NonNull BlockPos pos, @NonNull CollisionContext context) {
+        return getInteractionShape(state, level, pos);
+    }
+
+    @Override
+    protected @NonNull VoxelShape getCollisionShape(BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull CollisionContext context) {
         return SHAPES[state.getValue(PART).ordinal()][state.getValue(TILT).ordinal()]
-                .get(state.getValue(FACING));
+            .get(state.getValue(FACING));
+    }
+
+    @Override
+    protected @NonNull VoxelShape getInteractionShape(BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos) {
+        return SHAPES_ACT.get(state.getValue(FACING));
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -155,7 +166,7 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
         }
 
         @Override
-        public String getSerializedName() {
+        public @NonNull String getSerializedName() {
             return this.name;
         }
     }
@@ -197,20 +208,20 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
         // Base shapes for rotateHorizontal: railing at z=0-3 (north face), slope along X.
         // RIGHT_UP: high at +X (east), low at -X (west).
         VoxelShape lowerRU = Shapes.or(
-                Block.box(12, 0, 0, 16, 32, 3),
-                Block.box(8, 0, 0, 12, 28, 3),
-                Block.box(4, 0, 0, 8, 24, 3),
-                Block.box(0, 0, 0, 4, 24, 3)
+                Block.box(12, 0, 0.01, 16, 32, 3),
+                Block.box(8, 0, 0.01, 12, 28, 3),
+                Block.box(4, 0, 0.01, 8, 24, 3),
+                Block.box(0, 0, 0.01, 4, 24, 3)
         );
         VoxelShape middleRU = Shapes.or(
-                Block.box(12, 0, 0, 16, 32, 3),
-                Block.box(8, 0, 0, 12, 28, 3),
-                Block.box(4, -8, 0, 8, 24, 3),
-                Block.box(0, -8, 0, 4, 24, 3)
+                Block.box(12, 0, 0.01, 16, 32, 3),
+                Block.box(8, 0, 0.01, 12, 28, 3),
+                Block.box(4, -8, 0.01, 8, 24, 3),
+                Block.box(0, -8, 0.01, 4, 24, 3)
         );
         VoxelShape upperRU = Shapes.or(
-                Block.box(8, 0, 0, 16, 24, 3),
-                Block.box(0, -8, 0, 8, 24, 3)
+                Block.box(8, 0, 0.01, 16, 24, 3),
+                Block.box(0, -8, 0.01, 8, 24, 3)
         );
 
         VoxelShape lowerLU = mirrorSlope(lowerRU);
@@ -223,5 +234,8 @@ public class SlopedRailingBlock extends HorizontalDirectionalBlock {
         SHAPES[Part.LOWER.ordinal()][Tilt.LEFT_UP.ordinal()] = Shapes.rotateHorizontal(lowerLU);
         SHAPES[Part.MIDDLE.ordinal()][Tilt.LEFT_UP.ordinal()] = Shapes.rotateHorizontal(middleLU);
         SHAPES[Part.UPPER.ordinal()][Tilt.LEFT_UP.ordinal()] = Shapes.rotateHorizontal(upperLU);
+
+        VoxelShape actShape = Block.box(0, 0, 0.01, 16, 16, 8);
+        SHAPES_ACT = Shapes.rotateHorizontal(actShape);
     }
 }
