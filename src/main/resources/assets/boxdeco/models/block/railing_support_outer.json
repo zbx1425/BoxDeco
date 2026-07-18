@@ -1,0 +1,25 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"particle": "boxdeco:block/metal",
+		"metal": "boxdeco:block/metal"
+	},
+	"elements": [
+		{
+			"name": "Right side",
+			"from": [30, 8, 0],
+			"to": [32, 16, 2],
+			"rotation": {"x": 0, "y": -90, "z": 0, "origin": [16, 14, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 8], "texture": "#metal"},
+				"east": {"uv": [14, 0, 16, 8], "texture": "#metal"},
+				"south": {"uv": [14, 0, 16, 8], "texture": "#metal"},
+				"west": {"uv": [0, 0, 2, 8], "texture": "#metal"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#metal"},
+				"down": {"uv": [14, 14, 16, 16], "texture": "#metal", "cullface": "down"}
+			}
+		}
+	]
+}

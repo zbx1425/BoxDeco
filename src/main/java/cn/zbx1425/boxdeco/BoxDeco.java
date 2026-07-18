@@ -44,6 +44,10 @@ public class BoxDeco {
         "sloped_glass_railing", SlopedRailingBlock::new);
     public static final DeferredItem<BlockItem> ITEM_BLOCK_SLOPED_GLASS_RAILING = ITEMS.registerSimpleBlockItem(
         "sloped_glass_railing", BLOCK_SLOPED_GLASS_RAILING);
+    public static final DeferredBlock<RailingBlock> BLOCK_RAILING_SUPPORT = BLOCKS.registerBlock(
+        "railing_support", RailingBlock::new);
+    public static final DeferredItem<BlockItem> ITEM_BLOCK_RAILING_SUPPORT = ITEMS.registerSimpleBlockItem(
+        "railing_support", BLOCK_RAILING_SUPPORT);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB_BOXDECO = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.boxdeco"))
@@ -52,6 +56,7 @@ public class BoxDeco {
             .displayItems((parameters, output) -> {
                 output.accept(ITEM_BLOCK_GLASS_RAILING.get());
                 output.accept(ITEM_BLOCK_SLOPED_GLASS_RAILING.get());
+                output.accept(ITEM_BLOCK_RAILING_SUPPORT.get());
             }).build());
 
 

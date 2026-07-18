@@ -2,5 +2,6 @@
   "itemGroup.boxdeco": "BoxDeco",
 
   "block.boxdeco.glass_railing": "Glass Railing",
-  "block.boxdeco.sloped_glass_railing": "Sloped Glass Railing"
+  "block.boxdeco.sloped_glass_railing": "Sloped Glass Railing",
+  "block.boxdeco.railing_support": "Edge Railing Support"
 }

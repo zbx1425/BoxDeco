@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "facing=east,shape=inner_left": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,shape=inner_right": {
+      "model": "boxdeco:block/railing_support_inner"
+    },
+    "facing=east,shape=outer_left": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,shape=outer_right": {
+      "model": "boxdeco:block/railing_support_outer"
+    },
+    "facing=east,shape=straight": {
+      "model": "boxdeco:block/railing_support_straight"
+    },
+    "facing=north,shape=inner_left": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,shape=inner_right": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,shape=outer_left": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,shape=outer_right": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,shape=straight": {
+      "model": "boxdeco:block/railing_support_straight",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=south,shape=inner_left": {
+      "model": "boxdeco:block/railing_support_inner"
+    },
+    "facing=south,shape=inner_right": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,shape=outer_left": {
+      "model": "boxdeco:block/railing_support_outer"
+    },
+    "facing=south,shape=outer_right": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,shape=straight": {
+      "model": "boxdeco:block/railing_support_straight",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,shape=inner_left": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,shape=inner_right": {
+      "model": "boxdeco:block/railing_support_inner",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,shape=outer_left": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,shape=outer_right": {
+      "model": "boxdeco:block/railing_support_outer",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,shape=straight": {
+      "model": "boxdeco:block/railing_support_straight",
+      "uvlock": true,
+      "y": 180
+    }
+  }
+}
