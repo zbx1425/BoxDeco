@@ -2,9 +2,14 @@ package cn.zbx1425.boxdeco;
 
 import cn.zbx1425.boxdeco.block.RailingBlock;
 import cn.zbx1425.boxdeco.block.SlopedRailingBlock;
+import cn.zbx1425.boxdeco.block.ThinVerticalBarrierBlock;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -48,6 +53,18 @@ public class BoxDeco {
         "railing_support", RailingBlock::new);
     public static final DeferredItem<BlockItem> ITEM_BLOCK_RAILING_SUPPORT = ITEMS.registerSimpleBlockItem(
         "railing_support", BLOCK_RAILING_SUPPORT);
+    public static final DeferredBlock<ThinVerticalBarrierBlock> BLOCK_THIN_VERTICAL_BARRIER = BLOCKS.registerBlock(
+        "thin_vertical_barrier", ThinVerticalBarrierBlock::new, () ->
+            BlockBehaviour.Properties.of()
+                .strength(-1.0F, 3600000.8F)
+                .mapColor(MapColor.NONE)
+                .noLootTable()
+                .noOcclusion()
+                .isValidSpawn(Blocks::never)
+                .noTerrainParticles()
+                .pushReaction(PushReaction.BLOCK));
+    public static final DeferredItem<BlockItem> ITEM_BLOCK_THIN_VERTICAL_BARRIER = ITEMS.registerSimpleBlockItem(
+        "thin_vertical_barrier", BLOCK_THIN_VERTICAL_BARRIER);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB_BOXDECO = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.boxdeco"))
@@ -57,6 +74,7 @@ public class BoxDeco {
                 output.accept(ITEM_BLOCK_GLASS_RAILING.get());
                 output.accept(ITEM_BLOCK_SLOPED_GLASS_RAILING.get());
                 output.accept(ITEM_BLOCK_RAILING_SUPPORT.get());
+                output.accept(ITEM_BLOCK_THIN_VERTICAL_BARRIER.get());
             }).build());
 
 
